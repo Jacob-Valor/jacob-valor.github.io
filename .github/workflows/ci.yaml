@@ -1,4 +1,4 @@
-name: Build and Test
+name: ✅ Build and Test
 
 on:
   pull_request:
@@ -19,16 +19,17 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v6
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Setup Bun
+      - name: 🥟 Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Cache dependencies
+      - name: 💾 Cache dependencies
         uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
@@ -36,15 +37,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-
 
-      - run: bun install --frozen-lockfile
+      - name: 📦 Install dependencies
+        run: bun install --frozen-lockfile
 
-      - name: Check types and style
+      - name: 🔍 Check types and style
         run: bun run check
 
-      - name: Test
+      - name: 🧪 Run tests
         run: bun test
 
-      - name: Ensure Quartz builds, check bundle info
+      - name: 🔨 Build Quartz and check bundle
         run: bun quartz build --bundleInfo -d docs
 
   publish-tag:
@@ -53,19 +55,20 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v6
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Setup Bun
+      - name: 🥟 Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Get package version
+      - name: 📋 Get package version
         run: bun -e 'console.log(`PACKAGE_VERSION=${require("./package.json").version}`)' >> $GITHUB_ENV
 
-      - name: Create release tag
+      - name: 🏷️ Create release tag
         uses: pkgdeps/git-tag-action@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

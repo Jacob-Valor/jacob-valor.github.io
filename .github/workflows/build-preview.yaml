@@ -1,4 +1,4 @@
-name: Build Preview Deployment
+name: 🔍 Build Preview Deployment
 
 on:
   pull_request:
@@ -11,16 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Preview
     steps:
-      - uses: actions/checkout@v6
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Setup Bun
+      - name: 🥟 Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Cache dependencies
+      - name: 💾 Cache dependencies
         uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
@@ -28,15 +29,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-
 
-      - run: bun install --frozen-lockfile
+      - name: 📦 Install dependencies
+        run: bun install --frozen-lockfile
 
-      - name: Check types and style
+      - name: 🔍 Check types and style
         run: bun run check
 
-      - name: Build Quartz
+      - name: 🔨 Build Quartz
         run: bun quartz build -d docs -v
 
-      - name: Upload build artifact
+      - name: 📤 Upload build artifact
         uses: actions/upload-artifact@v6
         with:
           name: preview-build
