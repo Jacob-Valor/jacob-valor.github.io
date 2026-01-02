@@ -1,5 +1,11 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 🤖 Dependabot Configuration
+# Automated dependency updates for Quartz
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 version: 2
 updates:
+  # 📦 NPM Dependencies
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -9,6 +15,8 @@ updates:
         applies-to: "version-updates"
         patterns:
           - "*"
+
+  # ⚙️ GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
