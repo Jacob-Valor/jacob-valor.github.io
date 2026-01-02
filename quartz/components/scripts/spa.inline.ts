@@ -1,3 +1,4 @@
+// @ts-ignore: micromorph types are not correctly exported
 import micromorph from "micromorph"
 import { FullSlug, RelativeURL, getFullSlug, normalizeRelativeURLs } from "../../util/path"
 import { fetchCanonical } from "./util"
