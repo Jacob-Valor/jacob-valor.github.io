@@ -11,14 +11,16 @@ const config: QuartzConfig = {
     pageTitle: "Quartz 4",
     pageTitleSuffix: "",
     enableSPA: true,
-    enablePopovers: false,
-    analytics: null,
+    enablePopovers: true,
+    analytics: {
+      provider: "plausible",
+    },
     locale: "en-US",
     baseUrl: "quartz.jzhao.xyz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
-      fontOrigin: "local",
+      fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
         header: "Schibsted Grotesk",
@@ -86,7 +88,8 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Plugin.CustomOgImages(),
+      // Comment out CustomOgImages to speed up build time
+      Plugin.CustomOgImages(),
     ],
   },
 }
