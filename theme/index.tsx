@@ -7,7 +7,7 @@ const Search = () => {
       docSearchProps={{
         appId: "YRM4ENN0OT", // Replace with your own Algolia appId
         apiKey: "dc0687cd4ad3bf9ed5d6c3249a68aafe", // Replace with your own Algolia apiKey
-        indexName: "docsearch", // Replace with your own Algolia indexName
+        indexName: "web-blog", // Replace with your own Algolia indexName
       }}
     />
   );
