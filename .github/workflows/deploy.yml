@@ -17,7 +17,7 @@ jobs:
       pages: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0 # Full history required for git-based metadata
 
@@ -25,10 +25,9 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.x
-          cache: true
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -40,7 +39,7 @@ jobs:
         run: bun run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: doc_build
 
@@ -57,4 +56,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
