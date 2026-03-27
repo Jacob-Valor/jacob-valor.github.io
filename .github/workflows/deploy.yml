@@ -41,10 +41,24 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Archive artifact
+        shell: sh
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --directory "doc_build" \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            .
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          path: doc_build
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     needs: build
