@@ -11,10 +11,11 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@rspress/core": "^2.0.6",
+    "@rspress/core": "^2.0.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "radix-ui": "^1.4.3",
+    "react-icons": "^5.6.0",
     "rspress-plugin-blog-list": "^1.0.2",
     "tailwind-merge": "^3.5.0"
   },
@@ -23,7 +24,7 @@
     "@rspress/plugin-algolia": "^2.0.7",
     "@rspress/plugin-llms": "^2.0.7",
     "@tailwindcss/postcss": "^4.2.2",
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.19.15",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.4",
